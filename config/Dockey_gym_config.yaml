@@ -1,0 +1,22 @@
+data:
+  train:
+    info_path: "./dataset/train"
+    batch_size: 250
+    num_workers: 0
+    shuffle: True
+  val:
+    info_path: "./dataset/val"
+    batch_size: 5
+    num_workers: 0
+    shuffle: True
+
+optimizer:
+  type: 'Adam'
+  lr: 0.004  
+
+checkpoint: 
+
+epoch: 128
+val_epoch: 50
+step_epoch: 20
+work_dir: "./work_dir"
