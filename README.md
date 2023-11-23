@@ -54,6 +54,6 @@ $ python datasets/get_data.py --speed 0.3 --num 1000 --epoch 5 --ratio 0.1 --pat
 &emsp;&emsp;![white](https://github.com/unswimmingduck/End2End_Driving/assets/111033998/a5fd8864-dfdb-48d5-ba29-5e87e6042a6c)
 &emsp;&emsp;![yellow](https://github.com/unswimmingduck/End2End_Driving/assets/111033998/c8f0de9f-6353-443f-abc7-3a5e1205226f)   
 &emsp;&emsp; Thirdly, I apply ```cv2.Canny``` to get the outline of white lanes and yellow lane. And I crop the left lane RoI, center lane RoI, and right lane RoI respectively. After that, I use ```cv2.HoughLinesP``` to got the line in those RoIs. What's, more, I used Mean-Filtering Algorithm to filter some useless line like some horizontal line segments that may make some error in getting the pose of lanes. Then, I apply Linear-Regression Algorithm to to fit the pose of the lane.  
-&emsp;&emsp; Lastly, depending on those poses of lanes and different number of lanes has been detected, a function named ```offset_control``` will decide how much steel angle should be used. The following shows that based on lanes dectection, Donkey car can run in the road smoothly. 
+&emsp;&emsp; Lastly, depending on those poses of lanes and different number of lanes has been detected, a function named ```offset_control``` in ```get_data.py``` will decide how much steel angle should be used. The following shows that based on lanes dectection, Donkey car can run in the road smoothly. 
 
 
