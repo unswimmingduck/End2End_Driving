@@ -64,7 +64,7 @@ $ python datasets/get_data.py --speed 0.3 --num 1000 --epoch 5 --ratio 0.1 --pat
 &emsp;&emsp; Based on "[End to End Learning for Self-Driving Cars](https://arxiv.org/abs/1604.07316 )", the following picture shows the architecture of this end-to-end self driving net. If you want to get more details, you can see ```e2e_cnn/model/e2e_cnn.py```.
 &emsp;&emsp; &emsp;![image](https://github.com/unswimmingduck/End2End_Driving/assets/111033998/a6e979c3-efba-46f7-8e15-e12d72071ad2)
 #### 4.2.2 Dataset
-&emsp;&emsp; I built a dataset for Gym_Donkey to load data to the e2e_cnn model in ```e2e_cmm/dataset```. In the function of ```__getitem__`` this dataset, I return two parameters: **images(in size of 120x160) and the gruond truth of steel angle**. **So if you want to use this model to train other data, you could build a custome dataset that need to return the same size images and steel angle.**  
+&emsp;&emsp; I built a dataset for Gym_Donkey to load data to the e2e_cnn model in ```e2e_cmm/dataset```. In the function of ```__getitem__``` this dataset, I return two parameters: **images(in size of 120x160) and the gruond truth of steel angle**. **So if you want to use this model to train other data, you could build a custome dataset that need to return the same size images and steel angle.**  
 #### 4.2.3 Data Augment
 &emsp;&emsp; What's more, to make the model can predict better steel angle in random generated road, I also built data augment in the dataset.  
 &emsp;&emsp; Firstly, I randomly filp the image horizontally and nagetivate the steel angle. In this way, the model can learn more information.  
