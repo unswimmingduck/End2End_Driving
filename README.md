@@ -55,7 +55,7 @@ $ python tools/train.py  config/Donkey_gym_config.yaml
 &emsp;&emsp; If you want to train other environment in Donkey_gym, you could use my 128 epochs training checkpoint in ```checkpoint/epoch_128.pth```. What's more, you can see the training log in ```doc/```.
 ### 3.2 Driving
 &emsp;&emsp; After you training successfully, we can test self-driving in donkey-gym.  
-&emsp;&emsp; Firstly, you should operate ```DonkeySimWin/donkey_sim.exe```(you download in https://github.com/tawnkramer/gym-donkeycar/releases) to lauch the simulator. 
+&emsp;&emsp; Firstly, you should operate ```DonkeySimWin/donkey_sim.exe```(you download in https://github.com/tawnkramer/gym-donkeycar/releases) to lauch the simulator.   
 &emsp;&emsp; Then, you can excute the following command to achieve self-driving.
 ```
 $ python tools/driving.py --checkpoint checkpoint/epoch_128.pth --speed 0.3 --frames 1000
