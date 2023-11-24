@@ -37,8 +37,30 @@ $ pip install -r requirement.txt
 ```
 $ pip install git+https://github.com/tawnkramer/gym-donkeycar
 ```
-## 3. 
-
+## 3. Training and Driving
+### 3.1 Training
+#### 3.1.1 Collecting data
+&emsp;&emsp; Before training, we should collecting the data and generate the dataset.  
+&emsp;&emsp; Firstly, you should operate ```DonkeySimWin/donkey_sim.exe```(you download in https://github.com/tawnkramer/gym-donkeycar/releases) to lauch the simulator.  
+&emsp;&emsp; Secondly, you can excute the following command to collect data and generate dataset. 
+```
+$ python datasets/get_data.py --speed 0.3 --num 1000 --epoch 5 --ratio 0.1 --path dataset
+```
+ &emsp;&emsp; In the command, ```--speed``` sets the speed of the donkey car. ```--num``` sets the num of frame in one roads. ```--epoch``` sets the num of raod ( In Gym-Donkey, everytime you excute ```gym.make("donkey-generated-roads-v0")```, it will randomly generate the road in the same surronding environment. So, if you want to get more information, you can set more epoch ). ```--ratio``` sets the ratio of val data in all collection data. ```--path``` sets the path to save those collecting data. So the following command will collecting 1000*5 data and split the data 4500 for train and 500 for validate in ```End2End_Driving\dataset\train``` and ```End2End_Driving\dataset\val``` respectively.
+#### 3.1.2 Training
+&emsp;&emsp; After data collection, you can excute the following command to start training. In the training, the config is used to configurate relavent parameters in training. 
+```
+$ python tools/train.py  config/Donkey_gym_config.yaml
+```
+&emsp;&emsp; If you want to train other environment in Donkey_gym, you could use my 128 epochs training checkpoint in ```checkpoint/epoch_128.pth```. What's more, you can see the training log in ```doc/```.
+### 3.2 Driving
+&emsp;&emsp; After you training successfully, we can test self-driving in donkey-gym.  
+&emsp;&emsp; Firstly, you should operate ```DonkeySimWin/donkey_sim.exe```(you download in https://github.com/tawnkramer/gym-donkeycar/releases) to lauch the simulator. 
+&emsp;&emsp; Then, you can excute the following command to achieve self-driving.
+```
+$ python tools/driving.py --checkpoint checkpoint/epoch_128.pth --speed 0.3 --frames 1000
+```
+&emsp;&emsp; In the command, ```--checkpoint``` means the path of the well trained model, ```--speed``` sets the speed of donkey car in simulator(you better set the same value as you set in Section 3.1.1 Collecting data). ```--frames``` sets the num of frame in one test, so this value decide how long the self-driving will excute.(But the length of road is limited, if you set you speed=0.3, you better set the frames=1000).
 ## 4. Works
 &emsp;&emsp; To achieveing self-driving, there are four parts work to do: **collecting data**, **building CNN model and dataset**, **training CNN model**, **deploying CNN model in simulator**. In the following, I will introduce those four parts work.
 ### 4.1 Collecting data
