@@ -64,12 +64,6 @@ $ python tools/driving.py --checkpoint checkpoint/epoch_128.pth --speed 0.3 --fr
 ## 4. Works
 &emsp;&emsp; To achieveing self-driving, there are four parts work to do: **collecting data**, **building CNN model and dataset**, **training CNN model**, **deploying CNN model in simulator**. In the following, I will introduce those four parts work.
 ### 4.1 Collecting data
-#### 4.1.1 Generating dataset
-&emsp;&emsp; If you want to generate the data, you can use below command. ```--speed``` sets the speed of the donkey car. ```--num``` sets the num of frame in one roads. ```--epoch``` sets the num of raod ( In Gym-Donkey, everytime you excute ```gym.make("donkey-generated-roads-v0")```, it will randomly generate the road in the same surronding environment. So, if you want to get more information, you can set more epoch ). ```--ratio``` sets the ratio of val data in all collection data. ```--path``` sets the path to save those collecting data. So the following command will collecting 1000*5 data and split the data 4500 for train and 500 for validate in ```End2End_Driving\dataset\train``` and ```End2End_Driving\dataset\val``` respectively.  
-```
-$ python datasets/get_data.py --speed 0.3 --num 1000 --epoch 5 --ratio 0.1 --path dataset
-```
-#### 4.1.2 Realization
 &emsp;&emsp; In order to collecting data and generate dataset, I use OpenCV to achieve self-driving based on lane detectation and the steel angle will be collected in the OpenCV self-driving. In the following parts, I will introduce how I use OpenCV to realize self-driving based on lane detectation.  
 &emsp;&emsp; Firstly, in Gym-Donkey, we can get the image from virtual camera by function ```img, _, _, _ = env.step(np.array([steel_angle, speed])```. And I realize the self-driving in ```env = gym.make("donkey-generated-roads-v0")```. The road img shows below (the img in the size of 120x160). I use three lane to help the donkey car to know where it is. So in order to detect the right lane, center lane and left lane, I apply OpenCV to process the images.   
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;![img](https://github.com/unswimmingduck/End2End_Driving/assets/111033998/3a431b44-ba0f-4d38-afe9-674dc8dcd3cd)   
@@ -92,6 +86,11 @@ $ python datasets/get_data.py --speed 0.3 --num 1000 --epoch 5 --ratio 0.1 --pat
 &emsp;&emsp; Firstly, I randomly filp the image horizontally and nagetivate the steel angle. In this way, the model can learn more information.  
 &emsp;&emsp; Secondly, I apply random brightness adjustment to make the model could achieve successful prediction in bad light condition.
 
+### 4.3 Training
+&emsp;&emsp; In section 3.1.2, you can see how to train. What's more, you also can see train log in ```doc/trai_log.log```
+
+### 4.4 Driving
+&emsp;&emsp; I have deployed end-to-ednd self-driving in gym-donkey and you can use the test it in simulator by ```tools/driving.py```. And you can got more information in section 3.1.3 to konw how to start self-driving in gym-donkey.
 
 
 
