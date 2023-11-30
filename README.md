@@ -10,7 +10,14 @@
 
 &emsp;&emsp;Paper: https://arxiv.org/abs/1604.07316 
 
-&emsp;&emsp;Simulator: [Gym-Donkey](https://github.com/tawnkramer/gym-donkeycar)
+&emsp;&emsp;Simulator: [Gym-Donkey](https://github.com/tawnkramer/gym-donkeycar)  
+
+&emsp;&emsp;**The following shows the performance of end-to-end self-driving works in gym-donkey. (the video may be unfluent because of the net)**  
+![image](https://github.com/unswimmingduck/End2End_Driving/blob/main/self_driving_128.gif)
+
+<img src="https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white">  
+
+&emsp;&emsp; You could also see the performance of the end-to-end self-driving CNN model in gym-donkey in [my YouTube channels](https://youtu.be/EANfsycsA-0?si=7uxOH4wzZ-gtPLKH)
 
 ## 2. Building virtual environment and simulator 
 ### 2.1 Env and dependencies
