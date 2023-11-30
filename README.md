@@ -13,7 +13,7 @@
 &emsp;&emsp;Simulator: [Gym-Donkey](https://github.com/tawnkramer/gym-donkeycar)  
 
 &emsp;&emsp;**The following shows the performance of end-to-end self-driving works in gym-donkey. (the video may be unfluent because of the net)**  
-![image](https://github.com/unswimmingduck/End2End_Driving/blob/main/self_driving_128.gif)
+![image]()
 
 <img src="https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white">  
 
